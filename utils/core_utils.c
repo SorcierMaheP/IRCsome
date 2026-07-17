@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <netdb.h>      // Structs for network DB operations
-#include <unistd.h>     // Unix API
-#include <sys/socket.h> // Socket utils
+#include <netdb.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <errno.h>
+#include <openssl/ssl.h>
+#include <poll.h>
 
 #include "utils.h"
 
@@ -51,6 +54,8 @@ void CORE_client_setup(int argc, char **argv, Client *client)
         CUST_ERROR("Enter all mandatory options (-H, -P, -N, -R)");
         exit(EXIT_FAILURE);
     }
+
+    HELPER_regex_init();
 }
 
 SSL_CTX *CORE_create_client_ctx(void)
@@ -201,10 +206,10 @@ void CORE_conn_reg(Client client)
     CORE_ssl_write(client.network.ssl, "USER %s 0 * :%s\r\n", client.id.nick, client.id.real);
 }
 
-int CORE_ssl_read(struct network network, Buffer *buf)
+int CORE_ssl_read(SSL *ssl, Buffer *buf)
 {
 
-    int ret = SSL_read(network.ssl, buf->data + buf->len, BUFFER_SIZE - buf->len - 1);
+    int ret = SSL_read(ssl, buf->data + buf->len, BUFFER_SIZE - buf->len - 1);
 
     if (ret <= 0)
     {
@@ -218,7 +223,7 @@ int CORE_ssl_read(struct network network, Buffer *buf)
     return ret;
 }
 
-void CORE_process_buffer(Buffer *buf)
+void CORE_process_buffer(Client *client, Buffer *buf)
 {
     char delim = ' ';
     char *line_end; // Pointer to \r if "\r\n" is found.
@@ -232,7 +237,7 @@ void CORE_process_buffer(Buffer *buf)
         if (line_end != buf->data)
         {
             server_msg = CORE_msg_parser(buf->data, delim);
-            HELPER_irc_msg_printer(server_msg);
+            CORE_irc_msg_process(client, &server_msg);
             free(server_msg.params);
         }
 
@@ -264,7 +269,7 @@ IRC_Message CORE_msg_parser(char msg[], char delim)
 
     if (*ptr == '\0')
     {
-        CUST_ERROR("Malformed message received from server");
+        CUST_ERROR("Empty message received from server");
         exit(EXIT_FAILURE);
     }
 
@@ -279,11 +284,14 @@ IRC_Message CORE_msg_parser(char msg[], char delim)
 
         if (*ptr == '\0')
         {
-            CUST_ERROR("Malformed message received from server");
+            CUST_ERROR("Only source found in message received from server");
             exit(EXIT_FAILURE);
         }
 
         *ptr++ = '\0';
+
+        // To keep only the nickname
+        irc_msg.source[strcspn(irc_msg.source, "!")] = '\0';
 
         while (*ptr == delim)
             ptr++;
@@ -292,7 +300,7 @@ IRC_Message CORE_msg_parser(char msg[], char delim)
     // COMMAND
     if (*ptr == '\0')
     {
-        CUST_ERROR("Malformed message received from server");
+        CUST_ERROR("No command found in message received from server");
         exit(EXIT_FAILURE);
     }
 
@@ -304,6 +312,12 @@ IRC_Message CORE_msg_parser(char msg[], char delim)
     if (*ptr != '\0')
     {
         *ptr++ = '\0';
+
+        if (!HELPER_is_command_numeric(irc_msg.command) && !HELPER_is_command_valid(irc_msg.command))
+        {
+            CUST_ERROR("Malformed command found in message received from server");
+            exit(EXIT_FAILURE);
+        }
 
         while (*ptr == delim)
             ptr++;
@@ -362,4 +376,12 @@ void CORE_read_input(struct network client_network)
     line[strcspn(line, "\n")] = '\0';
 
     CORE_ssl_write(client_network.ssl, "%s\r\n", line);
+}
+
+void CORE_irc_msg_process(Client *client, IRC_Message *irc_msg)
+{
+    if (HELPER_is_command_valid(irc_msg->command))
+        COMMAND_irc_dispatch(client, irc_msg);
+    else
+        NUMERIC_irc_dispatch(client, irc_msg);
 }

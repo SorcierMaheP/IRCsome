@@ -2,6 +2,7 @@
 **/.env
 **/client
 **/.vscode
+**/*.txt
 
 # Prerequisites
 *.d

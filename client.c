@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <poll.h>
+#include <openssl/ssl.h>
 
 #include "utils/utils.h"
 
@@ -30,8 +33,8 @@ int main(int argc, char *argv[])
 
         if (fds[0].revents & POLLIN)
         {
-            CORE_ssl_read(client.network, &buf);
-            CORE_process_buffer(&buf);
+            CORE_ssl_read(client.network.ssl, &buf);
+            CORE_process_buffer(&client, &buf);
         }
 
         if (fds[1].revents & POLLIN)
@@ -42,6 +45,7 @@ int main(int argc, char *argv[])
 
     HELPER_tls_connection_destroy(&client.network.ssl);
     HELPER_tls_ctx_destroy(ctx);
+    HELPER_regex_destroy();
 
     return 0;
 }

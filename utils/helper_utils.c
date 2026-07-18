@@ -66,8 +66,14 @@ void HELPER_tls_connection_destroy(SSL **ssl)
 {
     if (*ssl)
     {
+        int sock_fd = SSL_get_fd(*ssl);
+
         SSL_shutdown(*ssl);
         SSL_free(*ssl);
+
+        if (sock_fd >= 0)
+            close(sock_fd);
+
         *ssl = NULL;
     }
 }
@@ -101,6 +107,16 @@ void HELPER_regex_destroy(void)
 {
     regfree(&command_regex);
     regfree(&numeric_regex);
+}
+
+void HELPER_client_destroy(Client *client)
+{
+    free(client->network.host);
+    free(client->network.port);
+    free(client->id.pass);
+    free(client->id.nick);
+    free(client->id.user);
+    free(client->id.real);
 }
 
 int HELPER_is_command_valid(char *command)
@@ -143,12 +159,12 @@ int HELPER_is_command_numeric(char *command)
 
 void HELPER_irc_msg_printer(const IRC_Message *irc_msg)
 {
-    fprintf(stdout, CYAN("%s "), irc_msg->source ? irc_msg->source : "(none)");
-    fprintf(stdout, CYAN("%s "), irc_msg->command);
+    fprintf(stdout, ("%s%s %s"), ANSI_CYAN, irc_msg->source ? irc_msg->source : "(none)", ANSI_RESET);
+    fprintf(stdout, ("%s%s %s"), ANSI_CYAN, irc_msg->command, ANSI_RESET);
 
     for (size_t i = 0; i < irc_msg->params_len; i++)
     {
-        fprintf(stdout, CYAN("\"%s\" "), irc_msg->params[i]);
+        fprintf(stdout, ("%s\"%s\" %s"), ANSI_CYAN, irc_msg->params[i], ANSI_RESET);
     }
     fprintf(stdout, "\n");
 }
@@ -177,10 +193,10 @@ char *HELPER_concat_params(const IRC_Message *irc_msg, size_t start)
 {
     size_t len = 0;
 
-    for (size_t i = start; irc_msg->params[i] != NULL && i < irc_msg->params_len; i++)
+    for (size_t i = start; i < irc_msg->params_len && irc_msg->params[i] != NULL; i++)
     {
         len += strlen(irc_msg->params[i]);
-        if (irc_msg->params[i + 1] != NULL)
+        if (i < irc_msg->params_len - 1 && irc_msg->params[i + 1] != NULL && *irc_msg->params[i + 1] != '\0')
             len++;
     }
 
@@ -192,10 +208,10 @@ char *HELPER_concat_params(const IRC_Message *irc_msg, size_t start)
     }
 
     result[0] = '\0';
-    for (size_t i = start; irc_msg->params[i] != NULL && i < irc_msg->params_len; i++)
+    for (size_t i = start; i < irc_msg->params_len && irc_msg->params[i] != NULL; i++)
     {
         strcat(result, irc_msg->params[i]);
-        if (irc_msg->params[i + 1] != NULL)
+        if (i < irc_msg->params_len - 1 && irc_msg->params[i + 1] != NULL && *irc_msg->params[i + 1] != '\0')
             strcat(result, " ");
     }
 

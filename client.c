@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     HELPER_tls_connection_destroy(&client.network.ssl);
     HELPER_tls_ctx_destroy(ctx);
     HELPER_regex_destroy();
+    HELPER_client_destroy(&client);
 
     return 0;
 }

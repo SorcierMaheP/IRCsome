@@ -20,30 +20,30 @@ void COMMAND_irc_dispatch(Client *client, IRC_Message *irc_msg)
     IRC_Command cmd = COMMAND_str_to_enum(irc_msg->command);
 
     SSL *ssl = client->network.ssl;
-    char *nick = client->id.nick;
+    char **nick = &client->id.nick;
     if (irc_msg->source == NULL || irc_msg->source[0] == '\0')
         irc_msg->source = "(remote)";
 
     switch (cmd)
     {
     case CMD_NICK:
-        COMMAND_handle_NICK(irc_msg);
+        COMMAND_handle_NICK(nick, irc_msg);
         break;
 
     case CMD_QUIT:
-        COMMAND_handle_QUIT(irc_msg);
+        COMMAND_handle_QUIT(*nick, irc_msg);
         break;
 
     case CMD_JOIN:
-        COMMAND_handle_JOIN(irc_msg);
+        COMMAND_handle_JOIN(*nick, irc_msg);
         break;
 
     case CMD_PART:
-        COMMAND_handle_PART(irc_msg);
+        COMMAND_handle_PART(*nick, irc_msg);
         break;
 
     case CMD_PRIVMSG:
-        COMMAND_handle_PRIVMSG(nick, irc_msg);
+        COMMAND_handle_PRIVMSG(*nick, irc_msg);
         break;
 
     case CMD_NOTICE:
@@ -51,7 +51,7 @@ void COMMAND_irc_dispatch(Client *client, IRC_Message *irc_msg)
         break;
 
     case CMD_MODE:
-        COMMAND_handle_MODE(irc_msg);
+        COMMAND_handle_MODE(*nick, irc_msg);
         break;
 
     case CMD_TOPIC:
@@ -63,11 +63,15 @@ void COMMAND_irc_dispatch(Client *client, IRC_Message *irc_msg)
         break;
 
     case CMD_KICK:
-        COMMAND_handle_KICK(irc_msg);
+        COMMAND_handle_KICK(*nick, irc_msg);
         break;
 
     case CMD_PING:
         COMMAND_handle_PING(ssl, irc_msg);
+        break;
+
+    case CMD_ERROR:
+        COMMAND_handle_ERROR(irc_msg);
         break;
 
     // TODO: Work on this

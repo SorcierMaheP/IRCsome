@@ -4,21 +4,30 @@
 #include <openssl/ssl.h>
 
 // Custom defines
-#define RED(str) "\x1b[31m" str "\x1b[0m"
-#define GREEN(str) "\x1b[32m" str "\x1b[0m"
-#define CYAN(str) "\x1b[36m" str "\x1b[0m"
-#define BOLD_HIGH_ULINE_CYAN(str) "\x1b[1;4;96m" str "\x1b[0m"
-#define YELLOW(str) "\x1b[33m" str "\x1b[0m"
-#define BOLD_HIGH_YELLOW(str) "\x1b[1;93m" str "\x1b[0m"
-#define BOLD_HIGH_ULINE_YELLOW(str) "\x1b[1;4;93m" str "\x1b[0m"
-#define WHITE(str) "\x1b[37m" str "\x1b[0m"
-#define BOLD_HIGH_WHITE(str) "\x1b[1;97m" str "\x1b[0m"
-#define BOLD_HIGH_ULINE_WHITE(str) "\x1b[1;4;97m" str "\x1b[0m"
+/* Colors */
+#define ANSI_RED "\x1b[31m"
+#define ANSI_GREEN "\x1b[32m"
+#define ANSI_YELLOW "\x1b[33m"
+#define ANSI_WHITE "\x1b[37m"
+#define ANSI_CYAN "\x1b[36m"
+
+/* Bright/Bold */
+#define ANSI_BOLD_HIGH_YELLOW "\x1b[1;93m"
+#define ANSI_BOLD_HIGH_WHITE "\x1b[1;97m"
+#define ANSI_BOLD_HIGH_CYAN "\x1b[1;96m"
+
+/* Bright/Bold/Underline */
+#define ANSI_BOLD_HIGH_ULINE_YELLOW "\x1b[1;4;93m"
+#define ANSI_BOLD_HIGH_ULINE_WHITE "\x1b[1;4;97m"
+#define ANSI_BOLD_HIGH_ULINE_CYAN "\x1b[1;4;96m"
+
+/* Reset */
+#define ANSI_RESET "\x1b[0m"
 
 #define CUST_ERROR(msg) \
-    fprintf(stderr, RED("ERROR: %s!\n"), (msg))
+    fprintf(stderr, ANSI_RED "ERROR: %s!\n" ANSI_RESET, (msg))
 #define CUST_MESSAGE(msg) \
-    fprintf(stdout, GREEN("MESSAGE: %s!\n"), (msg))
+    fprintf(stdout, ANSI_GREEN "MESSAGE: %s!\n" ANSI_RESET, (msg))
 
 #define BUFFER_SIZE 4096
 

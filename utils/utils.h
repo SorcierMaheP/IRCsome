@@ -33,6 +33,7 @@ void HELPER_tls_connection_destroy(SSL **);
 void HELPER_tls_ctx_destroy(SSL_CTX *);
 void HELPER_regex_init(void);
 void HELPER_regex_destroy(void);
+void HELPER_client_destroy(Client *);
 int HELPER_is_command_valid(char *);
 int HELPER_is_command_numeric(char *);
 void HELPER_irc_msg_printer(const IRC_Message *);

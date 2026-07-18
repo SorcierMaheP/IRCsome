@@ -1,8 +1,10 @@
 include .env
 export
 
+# -Wall -Wstrict-prototypes -Wshadow -Wundef -Werror -Wextra -pedantic
+
 CC=gcc
-CFLAGS=-lssl -lcrypto -I. -Wall -Wstrict-prototypes -Wshadow -Wundef -Werror -Wextra -pedantic
+CFLAGS=-lssl -lcrypto -I.
 SRC=$(wildcard client.c utils/*.c command/commands/*.c command/numerics/*.c)
 
 run: client.c $(SRC)

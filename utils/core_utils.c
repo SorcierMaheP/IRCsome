@@ -14,7 +14,8 @@
 
 void CORE_client_setup(int argc, char **argv, Client *client)
 {
-    (client->id).user = getenv("USER") != NULL ? getenv("USER") : "unknown";
+    const char *user = getenv("USER");
+    client->id.user = strdup(user ? user : "unknown");
 
     int user_option;
     char *options = "H:P:pN:R:";
@@ -24,20 +25,20 @@ void CORE_client_setup(int argc, char **argv, Client *client)
         switch (user_option)
         {
         case 'H':
-            (client->network).host = optarg;
+            (client->network).host = strdup(optarg);
             break;
         case 'P':
-            (client->network).port = optarg;
+            (client->network).port = strdup(optarg);
             break;
         case 'p':
             fprintf(stdout, "Enter the connection password if needed, else press [ENTER].\n");
             HELPER_password_input(&(client->id).pass);
             break;
         case 'N':
-            (client->id).nick = optarg;
+            (client->id).nick = strdup(optarg);
             break;
         case 'R':
-            (client->id).real = optarg;
+            (client->id).real = strdup(optarg);
             break;
         case '?':
             CUST_ERROR("Invalid option or missing required option argument");

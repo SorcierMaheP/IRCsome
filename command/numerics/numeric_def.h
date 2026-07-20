@@ -174,163 +174,163 @@ typedef enum IRC_Numeric
     ERR_SASLALREADY = 907,
 } IRC_Numeric;
 
-void NUMERIC_handle_WELCOME(IRC_Message *);
-void NUMERIC_handle_YOURHOST(IRC_Message *);
-void NUMERIC_handle_CREATED(IRC_Message *);
-void NUMERIC_handle_MYINFO(IRC_Message *);
-void NUMERIC_handle_ISUPPORT(IRC_Message *);
-void NUMERIC_handle_BOUNCE(IRC_Message *);
+void NUMERIC_handle_WELCOME(const IRC_Message *);
+void NUMERIC_handle_YOURHOST(const IRC_Message *);
+void NUMERIC_handle_CREATED(const IRC_Message *);
+void NUMERIC_handle_MYINFO(const IRC_Message *);
+void NUMERIC_handle_ISUPPORT(const IRC_Message *);
+void NUMERIC_handle_BOUNCE(const IRC_Message *);
 
-void NUMERIC_handle_STATSCOMMANDS(IRC_Message *);
-void NUMERIC_handle_ENDOFSTATS(IRC_Message *);
-void NUMERIC_handle_UMODEIS(IRC_Message *);
-void NUMERIC_handle_STATSUPTIME(IRC_Message *);
+void NUMERIC_handle_STATSCOMMANDS(const IRC_Message *);
+void NUMERIC_handle_ENDOFSTATS(const IRC_Message *);
+void NUMERIC_handle_UMODEIS(const IRC_Message *);
+void NUMERIC_handle_STATSUPTIME(const IRC_Message *);
 
-void NUMERIC_handle_LUSERCLIENT(IRC_Message *);
-void NUMERIC_handle_LUSEROP(IRC_Message *);
-void NUMERIC_handle_LUSERUNKNOWN(IRC_Message *);
-void NUMERIC_handle_LUSERCHANNELS(IRC_Message *);
-void NUMERIC_handle_LUSERME(IRC_Message *);
+void NUMERIC_handle_LUSERCLIENT(const IRC_Message *);
+void NUMERIC_handle_LUSEROP(const IRC_Message *);
+void NUMERIC_handle_LUSERUNKNOWN(const IRC_Message *);
+void NUMERIC_handle_LUSERCHANNELS(const IRC_Message *);
+void NUMERIC_handle_LUSERME(const IRC_Message *);
 
-void NUMERIC_handle_ADMINME(IRC_Message *);
-void NUMERIC_handle_ADMINLOC1(IRC_Message *);
-void NUMERIC_handle_ADMINLOC2(IRC_Message *);
-void NUMERIC_handle_ADMINEMAIL(IRC_Message *);
-void NUMERIC_handle_TRYAGAIN(IRC_Message *);
-void NUMERIC_handle_LOCALUSERS(IRC_Message *);
-void NUMERIC_handle_GLOBALUSERS(IRC_Message *);
+void NUMERIC_handle_ADMINME(const IRC_Message *);
+void NUMERIC_handle_ADMINLOC1(const IRC_Message *);
+void NUMERIC_handle_ADMINLOC2(const IRC_Message *);
+void NUMERIC_handle_ADMINEMAIL(const IRC_Message *);
+void NUMERIC_handle_TRYAGAIN(const IRC_Message *);
+void NUMERIC_handle_LOCALUSERS(const IRC_Message *);
+void NUMERIC_handle_GLOBALUSERS(const IRC_Message *);
 
-void NUMERIC_handle_VERSION(IRC_Message *);
-void NUMERIC_handle_INFO(IRC_Message *);
-void NUMERIC_handle_MOTD(IRC_Message *);
-void NUMERIC_handle_ENDOFINFO(IRC_Message *);
-void NUMERIC_handle_MOTDSTART(IRC_Message *);
-void NUMERIC_handle_ENDOFMOTD(IRC_Message *);
+void NUMERIC_handle_VERSION(const IRC_Message *);
+void NUMERIC_handle_INFO(const IRC_Message *);
+void NUMERIC_handle_MOTD(const IRC_Message *);
+void NUMERIC_handle_ENDOFINFO(const IRC_Message *);
+void NUMERIC_handle_MOTDSTART(const IRC_Message *);
+void NUMERIC_handle_ENDOFMOTD(const IRC_Message *);
 
-void NUMERIC_handle_YOUREOPER(IRC_Message *);
-void NUMERIC_handle_REHASHING(IRC_Message *);
-void NUMERIC_handle_TIME(IRC_Message *);
+void NUMERIC_handle_YOUREOPER(const IRC_Message *);
+void NUMERIC_handle_REHASHING(const IRC_Message *);
+void NUMERIC_handle_TIME(const IRC_Message *);
 
-void NUMERIC_handle_NONE(IRC_Message *);
-void NUMERIC_handle_AWAY(IRC_Message *);
-void NUMERIC_handle_USERHOST(IRC_Message *);
-void NUMERIC_handle_UNAWAY(IRC_Message *);
-void NUMERIC_handle_NOWAWAY(IRC_Message *);
+void NUMERIC_handle_NONE(const IRC_Message *);
+void NUMERIC_handle_AWAY(const IRC_Message *);
+void NUMERIC_handle_USERHOST(const IRC_Message *);
+void NUMERIC_handle_UNAWAY(const IRC_Message *);
+void NUMERIC_handle_NOWAWAY(const IRC_Message *);
 
-void NUMERIC_handle_WHOISREGNICK(IRC_Message *);
-void NUMERIC_handle_WHOISUSER(IRC_Message *);
-void NUMERIC_handle_WHOISSERVER(IRC_Message *);
-void NUMERIC_handle_WHOISOPERATOR(IRC_Message *);
-void NUMERIC_handle_WHOWASUSER(IRC_Message *);
-void NUMERIC_handle_ENDOFWHO(IRC_Message *);
-void NUMERIC_handle_WHOISIDLE(IRC_Message *);
-void NUMERIC_handle_ENDOFWHOIS(IRC_Message *);
-void NUMERIC_handle_WHOISCHANNELS(IRC_Message *);
-void NUMERIC_handle_WHOISSPECIAL(IRC_Message *);
+void NUMERIC_handle_WHOISREGNICK(const IRC_Message *);
+void NUMERIC_handle_WHOISUSER(const IRC_Message *);
+void NUMERIC_handle_WHOISSERVER(const IRC_Message *);
+void NUMERIC_handle_WHOISOPERATOR(const IRC_Message *);
+void NUMERIC_handle_WHOWASUSER(const IRC_Message *);
+void NUMERIC_handle_ENDOFWHO(const IRC_Message *);
+void NUMERIC_handle_WHOISIDLE(const IRC_Message *);
+void NUMERIC_handle_ENDOFWHOIS(const IRC_Message *);
+void NUMERIC_handle_WHOISCHANNELS(const IRC_Message *);
+void NUMERIC_handle_WHOISSPECIAL(const IRC_Message *);
 
-void NUMERIC_handle_WHOISACCOUNT(IRC_Message *);
-void NUMERIC_handle_WHOISACTUALLY(IRC_Message *);
+void NUMERIC_handle_WHOISACCOUNT(const IRC_Message *);
+void NUMERIC_handle_WHOISACTUALLY(const IRC_Message *);
 
-void NUMERIC_handle_WHOREPLY(IRC_Message *);
+void NUMERIC_handle_WHOREPLY(const IRC_Message *);
 
-void NUMERIC_handle_ENDOFWHOWAS(IRC_Message *);
+void NUMERIC_handle_ENDOFWHOWAS(const IRC_Message *);
 
-void NUMERIC_handle_WHOISCERTFP(IRC_Message *);
-void NUMERIC_handle_WHOISHOST(IRC_Message *);
-void NUMERIC_handle_WHOISMODES(IRC_Message *);
+void NUMERIC_handle_WHOISCERTFP(const IRC_Message *);
+void NUMERIC_handle_WHOISHOST(const IRC_Message *);
+void NUMERIC_handle_WHOISMODES(const IRC_Message *);
 
-void NUMERIC_handle_RPLSTARTTLS(IRC_Message *);
-void NUMERIC_handle_WHOISSECURE(IRC_Message *);
+void NUMERIC_handle_RPLSTARTTLS(const IRC_Message *);
+void NUMERIC_handle_WHOISSECURE(const IRC_Message *);
 
-void NUMERIC_handle_HELPSTART(IRC_Message *);
-void NUMERIC_handle_HELPTXT(IRC_Message *);
-void NUMERIC_handle_ENDOFHELP(IRC_Message *);
+void NUMERIC_handle_HELPSTART(const IRC_Message *);
+void NUMERIC_handle_HELPTXT(const IRC_Message *);
+void NUMERIC_handle_ENDOFHELP(const IRC_Message *);
 
-void NUMERIC_handle_LOGGEDIN(IRC_Message *);
-void NUMERIC_handle_LOGGEDOUT(IRC_Message *);
-void NUMERIC_handle_SASLSUCCESS(IRC_Message *);
-void NUMERIC_handle_SASLMECHS(IRC_Message *);
+void NUMERIC_handle_LOGGEDIN(const IRC_Message *);
+void NUMERIC_handle_LOGGEDOUT(const IRC_Message *);
+void NUMERIC_handle_SASLSUCCESS(const IRC_Message *);
+void NUMERIC_handle_SASLMECHS(const IRC_Message *);
 
-void NUMERIC_handle_LISTSTART(IRC_Message *);
-void NUMERIC_handle_LIST(IRC_Message *);
-void NUMERIC_handle_LISTEND(IRC_Message *);
-void NUMERIC_handle_CHANNELMODEIS(IRC_Message *);
-void NUMERIC_handle_CREATIONTIME(IRC_Message *);
+void NUMERIC_handle_LISTSTART(const IRC_Message *);
+void NUMERIC_handle_LIST(const IRC_Message *);
+void NUMERIC_handle_LISTEND(const IRC_Message *);
+void NUMERIC_handle_CHANNELMODEIS(const IRC_Message *);
+void NUMERIC_handle_CREATIONTIME(const IRC_Message *);
 
-void NUMERIC_handle_NOTOPIC(IRC_Message *);
-void NUMERIC_handle_TOPIC(IRC_Message *);
-void NUMERIC_handle_TOPICWHOTIME(IRC_Message *);
+void NUMERIC_handle_NOTOPIC(const IRC_Message *);
+void NUMERIC_handle_TOPIC(const IRC_Message *);
+void NUMERIC_handle_TOPICWHOTIME(const IRC_Message *);
 
-void NUMERIC_handle_INVITELIST(IRC_Message *);
-void NUMERIC_handle_ENDOFINVITELIST(IRC_Message *);
-void NUMERIC_handle_INVITING(IRC_Message *);
+void NUMERIC_handle_INVITELIST(const IRC_Message *);
+void NUMERIC_handle_ENDOFINVITELIST(const IRC_Message *);
+void NUMERIC_handle_INVITING(const IRC_Message *);
 
-void NUMERIC_handle_INVEXLIST(IRC_Message *);
-void NUMERIC_handle_ENDOFINVEXLIST(IRC_Message *);
-void NUMERIC_handle_EXCEPTLIST(IRC_Message *);
-void NUMERIC_handle_ENDOFEXCEPTLIST(IRC_Message *);
+void NUMERIC_handle_INVEXLIST(const IRC_Message *);
+void NUMERIC_handle_ENDOFINVEXLIST(const IRC_Message *);
+void NUMERIC_handle_EXCEPTLIST(const IRC_Message *);
+void NUMERIC_handle_ENDOFEXCEPTLIST(const IRC_Message *);
 
-void NUMERIC_handle_NAMREPLY(IRC_Message *);
-void NUMERIC_handle_LINKS(IRC_Message *);
-void NUMERIC_handle_ENDOFLINKS(IRC_Message *);
-void NUMERIC_handle_ENDOFNAMES(IRC_Message *);
-void NUMERIC_handle_BANLIST(IRC_Message *);
-void NUMERIC_handle_ENDOFBANLIST(IRC_Message *);
+void NUMERIC_handle_NAMREPLY(const IRC_Message *);
+void NUMERIC_handle_LINKS(const IRC_Message *);
+void NUMERIC_handle_ENDOFLINKS(const IRC_Message *);
+void NUMERIC_handle_ENDOFNAMES(const IRC_Message *);
+void NUMERIC_handle_BANLIST(const IRC_Message *);
+void NUMERIC_handle_ENDOFBANLIST(const IRC_Message *);
 
-void NUMERIC_handle_UNKNOWNERROR(IRC_Message *);
-void NUMERIC_handle_NOSUCHNICK(IRC_Message *);
-void NUMERIC_handle_NOSUCHSERVER(IRC_Message *);
-void NUMERIC_handle_NOSUCHCHANNEL(IRC_Message *);
-void NUMERIC_handle_CANNOTSENDTOCHAN(IRC_Message *);
-void NUMERIC_handle_TOOMANYCHANNELS(IRC_Message *);
-void NUMERIC_handle_WASNOSUCHNICK(IRC_Message *);
+void NUMERIC_handle_UNKNOWNERROR(const IRC_Message *);
+void NUMERIC_handle_NOSUCHNICK(const IRC_Message *);
+void NUMERIC_handle_NOSUCHSERVER(const IRC_Message *);
+void NUMERIC_handle_NOSUCHCHANNEL(const IRC_Message *);
+void NUMERIC_handle_CANNOTSENDTOCHAN(const IRC_Message *);
+void NUMERIC_handle_TOOMANYCHANNELS(const IRC_Message *);
+void NUMERIC_handle_WASNOSUCHNICK(const IRC_Message *);
 
-void NUMERIC_handle_NOORIGIN(IRC_Message *);
-void NUMERIC_handle_NORECIPIENT(IRC_Message *);
-void NUMERIC_handle_NOTEXTTOSEND(IRC_Message *);
-void NUMERIC_handle_INPUTTOOLONG(IRC_Message *);
+void NUMERIC_handle_NOORIGIN(const IRC_Message *);
+void NUMERIC_handle_NORECIPIENT(const IRC_Message *);
+void NUMERIC_handle_NOTEXTTOSEND(const IRC_Message *);
+void NUMERIC_handle_INPUTTOOLONG(const IRC_Message *);
 
-void NUMERIC_handle_UNKNOWNCOMMAND(IRC_Message *);
-void NUMERIC_handle_NOMOTD(IRC_Message *);
+void NUMERIC_handle_UNKNOWNCOMMAND(const IRC_Message *);
+void NUMERIC_handle_NOMOTD(const IRC_Message *);
 
-void NUMERIC_handle_NONICKNAMEGIVEN(IRC_Message *);
-void NUMERIC_handle_ERRONEUSNICKNAME(IRC_Message *);
-void NUMERIC_handle_NICKNAMEINUSE(IRC_Message *);
-void NUMERIC_handle_NICKCOLLISION(IRC_Message *);
+void NUMERIC_handle_NONICKNAMEGIVEN(const IRC_Message *);
+void NUMERIC_handle_ERRONEUSNICKNAME(const IRC_Message *);
+void NUMERIC_handle_NICKNAMEINUSE(const IRC_Message *);
+void NUMERIC_handle_NICKCOLLISION(const IRC_Message *);
 
-void NUMERIC_handle_USERNOTINCHANNEL(IRC_Message *);
-void NUMERIC_handle_NOTONCHANNEL(IRC_Message *);
-void NUMERIC_handle_USERONCHANNEL(IRC_Message *);
+void NUMERIC_handle_USERNOTINCHANNEL(const IRC_Message *);
+void NUMERIC_handle_NOTONCHANNEL(const IRC_Message *);
+void NUMERIC_handle_USERONCHANNEL(const IRC_Message *);
 
-void NUMERIC_handle_NOTREGISTERED(IRC_Message *);
-void NUMERIC_handle_NEEDMOREPARAMS(IRC_Message *);
-void NUMERIC_handle_ALREADYREGISTERED(IRC_Message *);
-void NUMERIC_handle_PASSWDMISMATCH(IRC_Message *);
-void NUMERIC_handle_YOUREBANNEDCREEP(IRC_Message *);
+void NUMERIC_handle_NOTREGISTERED(const IRC_Message *);
+void NUMERIC_handle_NEEDMOREPARAMS(const IRC_Message *);
+void NUMERIC_handle_ALREADYREGISTERED(const IRC_Message *);
+void NUMERIC_handle_PASSWDMISMATCH(const IRC_Message *);
+void NUMERIC_handle_YOUREBANNEDCREEP(const IRC_Message *);
 
-void NUMERIC_handle_CHANNELISFULL(IRC_Message *);
-void NUMERIC_handle_UNKNOWNMODE(IRC_Message *);
-void NUMERIC_handle_INVITEONLYCHAN(IRC_Message *);
-void NUMERIC_handle_BANNEDFROMCHAN(IRC_Message *);
-void NUMERIC_handle_BADCHANNELKEY(IRC_Message *);
-void NUMERIC_handle_BADCHANMASK(IRC_Message *);
+void NUMERIC_handle_CHANNELISFULL(const IRC_Message *);
+void NUMERIC_handle_UNKNOWNMODE(const IRC_Message *);
+void NUMERIC_handle_INVITEONLYCHAN(const IRC_Message *);
+void NUMERIC_handle_BANNEDFROMCHAN(const IRC_Message *);
+void NUMERIC_handle_BADCHANNELKEY(const IRC_Message *);
+void NUMERIC_handle_BADCHANMASK(const IRC_Message *);
 
-void NUMERIC_handle_NOPRIVILEGES(IRC_Message *);
-void NUMERIC_handle_CHANOPRIVSNEEDED(IRC_Message *);
-void NUMERIC_handle_CANTKILLSERVER(IRC_Message *);
-void NUMERIC_handle_NOOPERHOST(IRC_Message *);
+void NUMERIC_handle_NOPRIVILEGES(const IRC_Message *);
+void NUMERIC_handle_CHANOPRIVSNEEDED(const IRC_Message *);
+void NUMERIC_handle_CANTKILLSERVER(const IRC_Message *);
+void NUMERIC_handle_NOOPERHOST(const IRC_Message *);
 
-void NUMERIC_handle_UMODEUNKNOWNFLAG(IRC_Message *);
-void NUMERIC_handle_USERSDONTMATCH(IRC_Message *);
-void NUMERIC_handle_HELPNOTFOUND(IRC_Message *);
-void NUMERIC_handle_INVALIDKEY(IRC_Message *);
+void NUMERIC_handle_UMODEUNKNOWNFLAG(const IRC_Message *);
+void NUMERIC_handle_USERSDONTMATCH(const IRC_Message *);
+void NUMERIC_handle_HELPNOTFOUND(const IRC_Message *);
+void NUMERIC_handle_INVALIDKEY(const IRC_Message *);
 
-void NUMERIC_handle_ERRSTARTTLS(IRC_Message *);
-void NUMERIC_handle_INVALIDMODEPARAM(IRC_Message *);
-void NUMERIC_handle_NOPRIVS(IRC_Message *);
+void NUMERIC_handle_ERRSTARTTLS(const IRC_Message *);
+void NUMERIC_handle_INVALIDMODEPARAM(const IRC_Message *);
+void NUMERIC_handle_NOPRIVS(const IRC_Message *);
 
-void NUMERIC_handle_NICKLOCKED(IRC_Message *);
-void NUMERIC_handle_SASLFAIL(IRC_Message *);
-void NUMERIC_handle_SASLTOOLONG(IRC_Message *);
-void NUMERIC_handle_SASLABORTED(IRC_Message *);
-void NUMERIC_handle_SASLALREADY(IRC_Message *);
+void NUMERIC_handle_NICKLOCKED(const IRC_Message *);
+void NUMERIC_handle_SASLFAIL(const IRC_Message *);
+void NUMERIC_handle_SASLTOOLONG(const IRC_Message *);
+void NUMERIC_handle_SASLABORTED(const IRC_Message *);
+void NUMERIC_handle_SASLALREADY(const IRC_Message *);

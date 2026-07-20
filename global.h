@@ -10,6 +10,7 @@
 #define ANSI_YELLOW "\x1b[33m"
 #define ANSI_WHITE "\x1b[37m"
 #define ANSI_CYAN "\x1b[36m"
+#define ANSI_PURPLE "\x1b[35m"
 
 /* Bright/Bold */
 #define ANSI_BOLD_HIGH_YELLOW "\x1b[1;93m"

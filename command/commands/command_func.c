@@ -56,12 +56,12 @@ void COMMAND_handle_PRIVMSG(const char *nick, const IRC_Message *irc_msg)
     if (strstr(irc_msg->params[1], nick) != NULL)
         color = ANSI_BOLD_HIGH_ULINE_WHITE;
 
-    HELPER_msg_printer("%s%s (To %s): %s%s\n", color, irc_msg->source, irc_msg->params[0], irc_msg->params[1], ANSI_RESET);
+    HELPER_msg_printer("%s%s (To %s):%s %s%s%s\n", ANSI_PURPLE, irc_msg->source, irc_msg->params[0], ANSI_RESET, color, irc_msg->params[1], ANSI_RESET);
 }
 
 void COMMAND_handle_NOTICE(const IRC_Message *irc_msg)
 {
-    HELPER_msg_printer("%s%s (To %s): %s%s\n", ANSI_BOLD_HIGH_ULINE_YELLOW, irc_msg->source, irc_msg->params[0], irc_msg->params[1], ANSI_RESET);
+    HELPER_msg_printer("%s%s (To %s):%s %s%s%s\n", ANSI_PURPLE, irc_msg->source, irc_msg->params[0], ANSI_RESET, ANSI_BOLD_HIGH_ULINE_YELLOW, irc_msg->params[1], ANSI_RESET);
 }
 
 void COMMAND_handle_MODE(const char *nick, const IRC_Message *irc_msg)

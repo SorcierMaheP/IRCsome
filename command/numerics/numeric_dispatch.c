@@ -109,22 +109,22 @@ void NUMERIC_irc_dispatch(Client *client, IRC_Message *irc_msg)
         NUMERIC_handle_TIME(irc_msg);
         break;
 
-        // /* 2. User */
-        // case RPL_NONE:
-        //     NUMERIC_handle_NONE(irc_msg);
-        //     break;
-        // case RPL_AWAY:
-        //     NUMERIC_handle_AWAY(irc_msg);
-        //     break;
-        // case RPL_USERHOST:
-        //     NUMERIC_handle_USERHOST(irc_msg);
-        //     break;
-        // case RPL_UNAWAY:
-        //     NUMERIC_handle_UNAWAY(irc_msg);
-        //     break;
-        // case RPL_NOWAWAY:
-        //     NUMERIC_handle_NOWAWAY(irc_msg);
-        //     break;
+    /* 2. User */
+    case RPL_NONE:
+        NUMERIC_handle_NONE(irc_msg);
+        break;
+    case RPL_AWAY:
+        NUMERIC_handle_AWAY(irc_msg);
+        break;
+    case RPL_USERHOST:
+        NUMERIC_handle_USERHOST(irc_msg);
+        break;
+    case RPL_UNAWAY:
+        NUMERIC_handle_UNAWAY(irc_msg);
+        break;
+    case RPL_NOWAWAY:
+        NUMERIC_handle_NOWAWAY(irc_msg);
+        break;
 
         // case RPL_WHOISREGNICK:
         //     NUMERIC_handle_WHOISREGNICK(irc_msg);

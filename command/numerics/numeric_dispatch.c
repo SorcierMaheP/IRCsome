@@ -126,91 +126,91 @@ void NUMERIC_irc_dispatch(Client *client, IRC_Message *irc_msg)
         NUMERIC_handle_NOWAWAY(irc_msg);
         break;
 
-        // case RPL_WHOISREGNICK:
-        //     NUMERIC_handle_WHOISREGNICK(irc_msg);
-        //     break;
-        // case RPL_WHOISUSER:
-        //     NUMERIC_handle_WHOISUSER(irc_msg);
-        //     break;
-        // case RPL_WHOISSERVER:
-        //     NUMERIC_handle_WHOISSERVER(irc_msg);
-        //     break;
-        // case RPL_WHOISOPERATOR:
-        //     NUMERIC_handle_WHOISOPERATOR(irc_msg);
-        //     break;
-        // case RPL_WHOWASUSER:
-        //     NUMERIC_handle_WHOWASUSER(irc_msg);
-        //     break;
-        // case RPL_ENDOFWHO:
-        //     NUMERIC_handle_ENDOFWHO(irc_msg);
-        //     break;
-        // case RPL_WHOISIDLE:
-        //     NUMERIC_handle_WHOISIDLE(irc_msg);
-        //     break;
-        // case RPL_ENDOFWHOIS:
-        //     NUMERIC_handle_ENDOFWHOIS(irc_msg);
-        //     break;
-        // case RPL_WHOISCHANNELS:
-        //     NUMERIC_handle_WHOISCHANNELS(irc_msg);
-        //     break;
-        // case RPL_WHOISSPECIAL:
-        //     NUMERIC_handle_WHOISSPECIAL(irc_msg);
-        //     break;
+    case RPL_WHOISREGNICK:
+        NUMERIC_handle_WHOISREGNICK(irc_msg);
+        break;
+    case RPL_WHOISUSER:
+        NUMERIC_handle_WHOISUSER(irc_msg);
+        break;
+    case RPL_WHOISSERVER:
+        NUMERIC_handle_WHOISSERVER(irc_msg);
+        break;
+    case RPL_WHOISOPERATOR:
+        NUMERIC_handle_WHOISOPERATOR(irc_msg);
+        break;
+    case RPL_WHOWASUSER:
+        NUMERIC_handle_WHOWASUSER(irc_msg);
+        break;
+    case RPL_ENDOFWHO:
+        NUMERIC_handle_ENDOFWHO(irc_msg);
+        break;
+    case RPL_WHOISIDLE:
+        NUMERIC_handle_WHOISIDLE(irc_msg);
+        break;
+    case RPL_ENDOFWHOIS:
+        NUMERIC_handle_ENDOFWHOIS(irc_msg);
+        break;
+    case RPL_WHOISCHANNELS:
+        NUMERIC_handle_WHOISCHANNELS(irc_msg);
+        break;
+    case RPL_WHOISSPECIAL:
+        NUMERIC_handle_WHOISSPECIAL(irc_msg);
+        break;
 
-        // case RPL_WHOISACCOUNT:
-        //     NUMERIC_handle_WHOISACCOUNT(irc_msg);
-        //     break;
-        // case RPL_WHOISACTUALLY:
-        //     NUMERIC_handle_WHOISACTUALLY(irc_msg);
-        //     break;
+    case RPL_WHOISACCOUNT:
+        NUMERIC_handle_WHOISACCOUNT(irc_msg);
+        break;
+    case RPL_WHOISACTUALLY:
+        NUMERIC_handle_WHOISACTUALLY(irc_msg);
+        break;
 
-        // case RPL_WHOREPLY:
-        //     NUMERIC_handle_WHOREPLY(irc_msg);
-        //     break;
+    case RPL_WHOREPLY:
+        NUMERIC_handle_WHOREPLY(irc_msg);
+        break;
 
-        // case RPL_ENDOFWHOWAS:
-        //     NUMERIC_handle_ENDOFWHOWAS(irc_msg);
-        //     break;
+    case RPL_ENDOFWHOWAS:
+        NUMERIC_handle_ENDOFWHOWAS(irc_msg);
+        break;
 
-        // case RPL_WHOISCERTFP:
-        //     NUMERIC_handle_WHOISCERTFP(irc_msg);
-        //     break;
-        // case RPL_WHOISHOST:
-        //     NUMERIC_handle_WHOISHOST(irc_msg);
-        //     break;
-        // case RPL_WHOISMODES:
-        //     NUMERIC_handle_WHOISMODES(irc_msg);
-        //     break;
+    case RPL_WHOISCERTFP:
+        NUMERIC_handle_WHOISCERTFP(irc_msg);
+        break;
+    case RPL_WHOISHOST:
+        NUMERIC_handle_WHOISHOST(irc_msg);
+        break;
+    case RPL_WHOISMODES:
+        NUMERIC_handle_WHOISMODES(irc_msg);
+        break;
 
-        // case RPL_STARTTLS:
-        //     NUMERIC_handle_RPLSTARTTLS(irc_msg);
-        //     break;
-        // case RPL_WHOISSECURE:
-        //     NUMERIC_handle_WHOISSECURE(irc_msg);
-        //     break;
+    case RPL_STARTTLS:
+        NUMERIC_handle_RPLSTARTTLS(irc_msg);
+        break;
+    case RPL_WHOISSECURE:
+        NUMERIC_handle_WHOISSECURE(irc_msg);
+        break;
 
-        // case RPL_HELPSTART:
-        //     NUMERIC_handle_HELPSTART(irc_msg);
-        //     break;
-        // case RPL_HELPTXT:
-        //     NUMERIC_handle_HELPTXT(irc_msg);
-        //     break;
-        // case RPL_ENDOFHELP:
-        //     NUMERIC_handle_ENDOFHELP(irc_msg);
-        //     break;
+    case RPL_HELPSTART:
+        NUMERIC_handle_HELPSTART(irc_msg);
+        break;
+    case RPL_HELPTXT:
+        NUMERIC_handle_HELPTXT(irc_msg);
+        break;
+    case RPL_ENDOFHELP:
+        NUMERIC_handle_ENDOFHELP(irc_msg);
+        break;
 
-        // case RPL_LOGGEDIN:
-        //     NUMERIC_handle_LOGGEDIN(irc_msg);
-        //     break;
-        // case RPL_LOGGEDOUT:
-        //     NUMERIC_handle_LOGGEDOUT(irc_msg);
-        //     break;
-        // case RPL_SASLSUCCESS:
-        //     NUMERIC_handle_SASLSUCCESS(irc_msg);
-        //     break;
-        // case RPL_SASLMECHS:
-        //     NUMERIC_handle_SASLMECHS(irc_msg);
-        //     break;
+    case RPL_LOGGEDIN:
+        NUMERIC_handle_LOGGEDIN(irc_msg);
+        break;
+    case RPL_LOGGEDOUT:
+        NUMERIC_handle_LOGGEDOUT(irc_msg);
+        break;
+    case RPL_SASLSUCCESS:
+        NUMERIC_handle_SASLSUCCESS(irc_msg);
+        break;
+    case RPL_SASLMECHS:
+        NUMERIC_handle_SASLMECHS(irc_msg);
+        break;
 
         // /* 3. Channel */
         // case RPL_LISTSTART:
